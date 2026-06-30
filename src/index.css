@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  body {
+    @apply bg-white text-ink-700 antialiased;
+    @apply dark:bg-ink-900 dark:text-slate-300;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  ::selection {
+    @apply bg-accent/30 text-white;
+  }
+
+  /* Focus ring — keyboard accessible everywhere */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-white dark:ring-offset-ink-900;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .section-eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-accent-dim dark:text-accent;
+  }
+
+  .card-surface {
+    @apply rounded-xl border border-slate-200 bg-white/60 backdrop-blur
+           dark:border-ink-600 dark:bg-ink-800/60;
+  }
+
+  /* thin teal scrollbar inside the console */
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(45, 212, 191, 0.4) transparent;
+  }
+  .scroll-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scroll-thin::-webkit-scrollbar-thumb {
+    background: rgba(45, 212, 191, 0.35);
+    border-radius: 8px;
+  }
+}
+
+/* subtle dotted grid backdrop, dashboard vibe */
+.grid-backdrop {
+  background-image: radial-gradient(rgba(45, 212, 191, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
