@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { projects, type Project } from '../data/resume'
+import TechIcon from './TechIcon'
 
 function GitHubIcon() {
   return (
@@ -85,8 +86,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           {project.stack.map((s) => (
             <span
               key={s}
-              className="rounded border border-slate-200 px-1.5 py-0.5 font-mono text-[10px] text-ink-600 dark:border-ink-600 dark:text-slate-400"
+              className="inline-flex items-center gap-1 rounded border border-slate-200 px-1.5 py-0.5 font-mono text-[10px] text-ink-600 dark:border-ink-600 dark:text-slate-400"
             >
+              <TechIcon name={s} className="h-3 w-3 shrink-0 text-slate-400 dark:text-slate-500" />
               {s}
             </span>
           ))}

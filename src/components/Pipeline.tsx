@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { experience, type Experience, type Stage } from '../data/resume'
+import TechIcon from './TechIcon'
 
 const STAGE_ORDER: Stage[] = ['Extract', 'Transform', 'Load']
 const STAGE_BLURB: Record<Stage, string> = {
@@ -35,9 +36,18 @@ function StageNode({ stage, role, index }: { stage: Stage; role: Experience; ind
                    hover:border-accent/60 dark:border-ink-600 dark:bg-ink-800/70"
       >
         <div className="flex items-start justify-between gap-3">
-          <div>
-            <h3 className="font-sans text-lg font-semibold text-ink-900 dark:text-white">{role.company}</h3>
-            <p className="text-sm text-ink-600 dark:text-slate-400">{role.role}</p>
+          <div className="flex items-start gap-3">
+            <span
+              aria-hidden
+              style={{ backgroundColor: role.brand.bg, color: role.brand.fg }}
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-lg font-mono text-sm font-bold tracking-tight shadow-sm"
+            >
+              {role.brand.mark}
+            </span>
+            <div>
+              <h3 className="font-sans text-lg font-semibold text-ink-900 dark:text-white">{role.company}</h3>
+              <p className="text-sm text-ink-600 dark:text-slate-400">{role.role}</p>
+            </div>
           </div>
           <div className="text-right">
             <p className="font-mono text-xs text-slate-500">{role.period}</p>
@@ -67,8 +77,9 @@ function StageNode({ stage, role, index }: { stage: Stage; role: Experience; ind
             {role.stack.map((s) => (
               <span
                 key={s}
-                className="rounded border border-accent/20 bg-accent/5 px-1.5 py-0.5 font-mono text-[10px] text-accent-dim dark:text-accent-soft"
+                className="inline-flex items-center gap-1 rounded border border-accent/20 bg-accent/5 px-1.5 py-0.5 font-mono text-[10px] text-accent-dim dark:text-accent-soft"
               >
+                <TechIcon name={s} className="h-3 w-3 shrink-0" />
                 {s}
               </span>
             ))}

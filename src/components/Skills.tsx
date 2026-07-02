@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { skills } from '../data/resume'
+import TechIcon from './TechIcon'
 
 export default function Skills() {
   const categories = useMemo(() => {
@@ -54,7 +55,13 @@ export default function Skills() {
         {filtered.map((s, i) => (
           <div key={s.skill}>
             <div className="mb-1.5 flex items-baseline justify-between gap-3">
-              <span className="text-sm text-ink-800 dark:text-slate-200">{s.skill}</span>
+              <span className="flex min-w-0 items-center gap-2 text-sm text-ink-800 dark:text-slate-200">
+                <TechIcon
+                  name={s.skill}
+                  className="h-4 w-4 shrink-0 text-slate-400 dark:text-slate-500"
+                />
+                <span className="truncate">{s.skill}</span>
+              </span>
               <span className="font-mono text-xs tabular-nums text-slate-500">{s.level}</span>
             </div>
             <div className="h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-ink-600">

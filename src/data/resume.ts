@@ -31,6 +31,13 @@ export const profile: Profile = {
 /** ETL stage each role maps to, for the career pipeline visualization. */
 export type Stage = 'Extract' | 'Transform' | 'Load'
 
+/** Brand-colored monogram badge shown on each role (avoids shipping trademarked logo files). */
+export interface Brand {
+  mark: string
+  bg: string
+  fg: string
+}
+
 export interface Experience {
   company: string
   role: string
@@ -39,6 +46,7 @@ export interface Experience {
   stage: Stage
   impact_pct: number // headline impact figure, for WHERE impact_pct > N
   location: string
+  brand: Brand
   highlights: string[]
   stack: string[]
 }
@@ -52,6 +60,7 @@ export const experience: Experience[] = [
     stage: 'Load',
     impact_pct: 30,
     location: 'Boston, MA',
+    brand: { mark: 'F', bg: '#4C9E2F', fg: '#FFFFFF' },
     highlights: [
       'Built Snowflake semantic models standardizing 20+ KPIs for 15+ stakeholders, cutting ad-hoc requests ~30%.',
       'Automated reporting and QA with Python + Cron on Snowflake.',
@@ -68,6 +77,7 @@ export const experience: Experience[] = [
     stage: 'Transform',
     impact_pct: 80,
     location: 'India',
+    brand: { mark: 'EY', bg: '#2E2E38', fg: '#FFE600' },
     highlights: [
       'Owned end-to-end ETL in Azure Data Factory, achieving 80% faster processing.',
       'Built PySpark / Spark SQL transformations on Databricks with Delta Lake + Iceberg.',
@@ -96,6 +106,7 @@ export const experience: Experience[] = [
     stage: 'Extract',
     impact_pct: 0,
     location: 'India',
+    brand: { mark: 'O', bg: '#FF7900', fg: '#FFFFFF' },
     highlights: [
       'Built Python RPA automating data extraction, saving 100+ man-hours.',
       'Surfaced deal-health insights from the extracted data.',
@@ -186,6 +197,82 @@ export const projects: Project[] = [
       'Trained a Random Forest reaching 72% accuracy, tuned with RandomizedSearchCV.',
       'Deployed the model behind a Flask web app on Heroku.',
     ],
+  },
+  {
+    id: 'imdb',
+    project: 'IMDb BI Pipeline',
+    blurb:
+      'End-to-end BI pipeline turning 7 raw IMDb datasets into a dimensional Snowflake warehouse and Power BI dashboards satisfying 15+ business requirements.',
+    has_llm: false,
+    featured: false,
+    year: 2025,
+    repo: 'https://github.com/OjasMisra/IMDb-BI_Pipeline-Analytics',
+    stack: ['Azure Data Factory', 'Snowflake', 'Python', 'PL/SQL', 'Power BI'],
+    architecture: [
+      'Clean 7 raw datasets (Python)',
+      'Stage load → Snowflake (ADF)',
+      'Dimensional model — dims + facts',
+      'Power BI dashboard',
+    ],
+    metrics: [
+      { label: 'raw datasets', value: '7' },
+      { label: 'business reqs', value: '15+' },
+      { label: 'warehouse', value: 'Snowflake' },
+    ],
+    details: [],
+  },
+  {
+    id: 'streaming',
+    project: 'Real-Time Streaming Pipeline',
+    blurb:
+      'Distributed real-time data processing pipeline — Kafka for streaming ingestion, Spark for transformation, containerized with Docker for scalable deployment.',
+    has_llm: false,
+    featured: false,
+    year: 2025,
+    repo: 'https://github.com/OjasMisra/Distributed_Real-Time_Data_Processing_System',
+    stack: ['Apache Kafka', 'Apache Spark', 'Docker', 'Python', 'Airflow'],
+    architecture: ['Kafka — stream ingestion', 'Spark — transformation', 'Docker Compose — orchestration'],
+    metrics: [
+      { label: 'ingestion', value: 'Kafka' },
+      { label: 'processing', value: 'Spark' },
+      { label: 'deploy', value: 'Docker' },
+    ],
+    details: [],
+  },
+  {
+    id: 'rail',
+    project: 'Rail Ticketing Database',
+    blurb:
+      'Normalized relational database for railway ticketing — passengers, trains, routes, seat availability, fares and refunds — with stored procedures and an ERD.',
+    has_llm: false,
+    featured: false,
+    year: 2024,
+    repo: 'https://github.com/OjasMisra/Rail_Ticketing_Relational_Database_System',
+    stack: ['MySQL', 'SQL', 'Stored Procedures', 'ERD'],
+    architecture: ['Normalized schema (13 entities)', 'Stored procedures & functions', 'Seat availability + refund rules'],
+    metrics: [
+      { label: 'core tables', value: '13' },
+      { label: 'engine', value: 'MySQL' },
+      { label: 'design', value: '3NF + ERD' },
+    ],
+    details: [],
+  },
+  {
+    id: 'color',
+    project: 'Color Identification in Images',
+    blurb:
+      'Unsupervised KMeans model that filters a folder of images by a specified dominant color.',
+    has_llm: false,
+    featured: false,
+    year: 2021,
+    repo: 'https://github.com/OjasMisra/Color_Identification_In_Images',
+    stack: ['Python', 'scikit-learn', 'NumPy'],
+    architecture: ['Extract pixel colors', 'KMeans clustering', 'Filter images by color'],
+    metrics: [
+      { label: 'model', value: 'KMeans' },
+      { label: 'type', value: 'Unsupervised' },
+    ],
+    details: [],
   },
 ]
 
