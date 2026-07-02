@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { projects, type Project } from '../data/resume'
 import TechIcon from './TechIcon'
+import ProjectCover from './ProjectCover'
 
 function GitHubIcon() {
   return (
@@ -25,8 +26,17 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                       : 'border-slate-200 hover:border-accent/40 dark:border-ink-600'
                   }`}
     >
+      {/* generative SVG cover art */}
+      <div
+        className={`-mx-6 -mt-6 mb-5 overflow-hidden border-b border-slate-200 dark:border-ink-600 ${
+          featured ? 'h-40' : 'h-28'
+        }`}
+      >
+        <ProjectCover id={project.id} />
+      </div>
+
       {featured && (
-        <span className="absolute right-5 top-5 rounded-full border border-accent/40 bg-accent/10 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent">
+        <span className="absolute right-5 top-5 rounded-full border border-accent/40 bg-accent/10 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent shadow-sm backdrop-blur">
           ★ flagship
         </span>
       )}
