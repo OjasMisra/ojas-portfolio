@@ -43,3 +43,6 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # GitHub's Pages queue can stall; ride it out (ms) instead of failing at the 10-min default.
+          timeout: 900000
