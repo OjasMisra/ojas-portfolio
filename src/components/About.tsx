@@ -13,10 +13,10 @@ export default function About() {
           transition={{ duration: 0.45 }}
         >
           <p className="section-eyebrow mb-2">about</p>
-          <h2 className="font-sans text-2xl font-bold text-ink-900 dark:text-white sm:text-3xl">
+          <h2 className="font-sans text-3xl font-bold leading-tight text-ink-900 dark:text-white sm:text-4xl">
             I make data trustworthy, fast, and a little bit fun.
           </h2>
-          <div className="mt-4 space-y-4 text-ink-600 dark:text-slate-300">
+          <div className="mt-5 space-y-4 text-lg leading-relaxed text-ink-600 dark:text-slate-300">
             <p>
               I&apos;m a data engineer and analyst who likes the whole stack — from the messy
               extraction at the top of a pipeline down to the polished KPI someone actually makes a
@@ -27,6 +27,17 @@ export default function About() {
               Lately I&apos;m most excited about LLM-powered data products — putting models to work
               inside the warehouse, not bolted on the side. If it involves Snowflake, dbt, a
               dashboard that loads fast, or an agent that writes its own charts, I&apos;m in.
+            </p>
+            <p>
+              And when the laptop closes? Pickup basketball, mountain trails, and planning the
+              next adventure with friends —{' '}
+              <a
+                href="#life"
+                className="font-semibold text-accent-dim underline underline-offset-4 dark:text-accent"
+              >
+                more on that below
+              </a>
+              .
             </p>
           </div>
         </motion.div>

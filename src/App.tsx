@@ -8,6 +8,7 @@ const Pipeline = lazy(() => import('./components/Pipeline'))
 const Projects = lazy(() => import('./components/Projects'))
 const Skills = lazy(() => import('./components/Skills'))
 const About = lazy(() => import('./components/About'))
+const Life = lazy(() => import('./components/Life'))
 const Contact = lazy(() => import('./components/Contact'))
 
 const Loading = () => <div className="container-x py-16" aria-hidden />
@@ -32,6 +33,7 @@ export default function App() {
           <Projects />
           <Skills />
           <About />
+          <Life />
           <Contact />
         </Suspense>
       </main>

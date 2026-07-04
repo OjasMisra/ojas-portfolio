@@ -19,6 +19,7 @@ import {
   awards,
   metrics,
   fuel,
+  life,
 } from '../data/resume'
 
 export type Shape = 'table' | 'cards' | 'bars'
@@ -54,6 +55,11 @@ const TABLES: Record<string, TableDef> = {
   metrics: { rows: metrics as unknown as Record<string, unknown>[], defaultShape: 'bars', vizColumn: 'value' },
   education: { rows: education as unknown as Record<string, unknown>[], defaultShape: 'table' },
   awards: { rows: awards as unknown as Record<string, unknown>[], defaultShape: 'table' },
+  life: {
+    rows: life as unknown as Record<string, unknown>[],
+    defaultShape: 'cards',
+    note: '// the human layer. hype is self-reported and completely unaudited.',
+  },
   fuel: {
     rows: fuel as unknown as Record<string, unknown>[],
     defaultShape: 'cards',
@@ -281,6 +287,7 @@ export const SAMPLE_QUERIES: { label: string; query: string }[] = [
   { label: 'top skills', query: 'SELECT skill, level FROM ojas.skills ORDER BY level DESC LIMIT 8;' },
   { label: 'LLM projects', query: 'SELECT project, stack FROM ojas.projects WHERE has_llm = TRUE;' },
   { label: 'the numbers', query: 'SELECT metric, value FROM ojas.metrics ORDER BY value DESC;' },
+  { label: 'off the clock', query: 'SELECT * FROM ojas.life ORDER BY hype DESC;' },
   { label: 'education', query: 'SELECT * FROM ojas.education;' },
 ]
 
@@ -291,6 +298,7 @@ export const SURPRISE_QUERIES: string[] = [
   'SELECT project, stack FROM ojas.projects WHERE featured = TRUE;',
   'SELECT skill FROM ojas.skills WHERE category LIKE \'%AI%\';',
   'SELECT metric, value FROM ojas.metrics WHERE value > 50;',
+  'SELECT thing, vibe FROM ojas.life WHERE hype >= 90;',
   'SELECT coffee FROM ojas.fuel;',
 ]
 

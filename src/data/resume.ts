@@ -373,6 +373,49 @@ export const metrics: Metric[] = [
   { metric: 'kpis_standardized', value: 20, suffix: '+', prefix: '', context: 'KPIs standardized for 15+ stakeholders' },
 ]
 
+/** The human side — the "life" section + the ojas.life table in the console. */
+export interface Life {
+  thing: string
+  vibe: string // emoji
+  detail: string
+  hype: number // self-reported enthusiasm, 0–100, entirely unaudited
+}
+
+export const lifeTagline = 'big tech buff · data nerd · jack of all sports · friendventurer'
+
+export const life: Life[] = [
+  {
+    thing: 'friendventuring',
+    vibe: '🧭',
+    detail: 'Road trips, food crawls, and half-planned adventures that somehow always work out. Best memories ship with friends.',
+    hype: 100,
+  },
+  {
+    thing: 'jack of all sports',
+    vibe: '🏀',
+    detail: "Basketball, tennis, soccer — if it has a ball and a score, count me in. Master of none, up for all of them.",
+    hype: 95,
+  },
+  {
+    thing: 'loves to hike',
+    vibe: '⛰️',
+    detail: "Trails over treadmills. Slowly checking off New England's peaks, one summit snack at a time.",
+    hype: 90,
+  },
+  {
+    thing: 'big tech buff',
+    vibe: '💻',
+    detail: 'Keynote-day enthusiast. I read spec sheets for fun and always know what dropped this week.',
+    hype: 85,
+  },
+  {
+    thing: 'data nerd',
+    vibe: '📊',
+    detail: 'Yes, even off the clock — there is absolutely a chart about my hikes somewhere.',
+    hype: 80,
+  },
+]
+
 /** Easter-egg table — keep it playful, keep it real. */
 export interface Fuel {
   coffee: string
