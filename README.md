@@ -123,6 +123,30 @@ src/
 └─ index.css              # Tailwind layers, theme, reduced-motion
 ```
 
+## Analytics (GoatCounter)
+
+Pageviews are tracked with [GoatCounter](https://www.goatcounter.com) — free, open-source,
+**no cookies** (no consent banner needed), and a single ~3.5 KB async script in `index.html`
+that auto-skips localhost. Dashboard: <https://ojasmisra.goatcounter.com>.
+
+Read your stats as plain JSON (create an API token under **Settings → API**):
+
+```bash
+# total pageviews
+curl -s -H "Authorization: Bearer $GOATCOUNTER_TOKEN" \
+  https://ojasmisra.goatcounter.com/api/v0/stats/total
+
+# daily hits (last week)
+curl -s -H "Authorization: Bearer $GOATCOUNTER_TOKEN" \
+  "https://ojasmisra.goatcounter.com/api/v0/stats/hits?start=1+week+ago"
+
+# top referrers
+curl -s -H "Authorization: Bearer $GOATCOUNTER_TOKEN" \
+  https://ojasmisra.goatcounter.com/api/v0/stats/toprefs
+```
+
+---
+
 ## Notes
 
 - **Dark mode** is the default; toggle persists to `localStorage` and applies before paint (no flash).
