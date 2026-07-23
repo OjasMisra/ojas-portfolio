@@ -108,8 +108,9 @@ export default function Contact() {
             Let&apos;s build a pipeline together
           </h2>
           <p className="mt-2 max-w-xl text-ink-600 dark:text-slate-400">
-            Open to data engineering / analytics roles starting Fall 2026. Drop a message below and
-            it&apos;ll land straight in my inbox.
+            Got a project, an idea, or just want to say hi? Drop a message below — it lands
+            straight in my inbox and I actually read them. (Also open to data / analytics roles
+            from Fall 2026.)
           </p>
 
           <MessageForm />
