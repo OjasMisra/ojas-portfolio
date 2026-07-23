@@ -3,8 +3,8 @@ import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import { profile } from '../data/resume'
 
-// Sign up free at https://formspree.io, create a form, and paste its endpoint here.
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
+// Formspree form endpoint — manage at https://formspree.io/forms
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xrenygzk'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
