@@ -40,32 +40,33 @@ function MessageForm() {
     )
   }
 
+  const fieldClass =
+    'rounded-xl border border-slate-200 bg-transparent px-4 py-3 font-mono text-sm text-ink-900 placeholder:text-slate-500 focus:border-accent/60 focus:outline-none dark:border-ink-600 dark:text-white'
+
   return (
     <form onSubmit={handleSubmit} className="mt-6 max-w-lg space-y-3">
+      {/* Honeypot: bots fill this, humans never see it. */}
+      <input
+        type="text"
+        name="_gotcha"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+      />
       <div className="grid gap-3 sm:grid-cols-2">
-        <input
-          type="text"
-          name="name"
-          required
-          placeholder="Your name"
-          className="rounded-xl border border-slate-200 bg-transparent px-4 py-3 font-mono text-sm text-ink-900 placeholder:text-slate-500 focus:border-accent/60 focus:outline-none dark:border-ink-600 dark:text-white"
-        />
-        <input
-          type="email"
-          name="email"
-          required
-          placeholder="Your email"
-          className="rounded-xl border border-slate-200 bg-transparent px-4 py-3 font-mono text-sm text-ink-900 placeholder:text-slate-500 focus:border-accent/60 focus:outline-none dark:border-ink-600 dark:text-white"
-        />
+        <input type="text" name="name" required placeholder="Your name" aria-label="Your name" className={fieldClass} />
+        <input type="email" name="email" required placeholder="Your email" aria-label="Your email" className={fieldClass} />
       </div>
       <textarea
         name="message"
         required
         rows={4}
         placeholder="Say hello..."
-        className="w-full rounded-xl border border-slate-200 bg-transparent px-4 py-3 font-mono text-sm text-ink-900 placeholder:text-slate-500 focus:border-accent/60 focus:outline-none dark:border-ink-600 dark:text-white"
+        aria-label="Your message"
+        className={`w-full ${fieldClass}`}
       />
-      <div className="flex items-center gap-3">
+      <div className="flex flex-wrap items-center gap-3">
         <button
           type="submit"
           disabled={status === 'sending'}
@@ -75,7 +76,11 @@ function MessageForm() {
         </button>
         {status === 'error' && (
           <span className="font-mono text-xs text-red-500">
-            Something went wrong — try again.
+            Didn&apos;t send —{' '}
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="underline hover:text-accent">
+              reach me on LinkedIn
+            </a>{' '}
+            instead.
           </span>
         )}
       </div>
